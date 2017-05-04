@@ -10,15 +10,18 @@
 
     <input type="text" v-model="message"/>
     <p> O valor do bind eh {{message}}</p>
+    <p> Something {{obj.something}}</p>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.js"></script>
     <script>
-    let data = {"message":"Ola Brasil"};
+
 
     new Vue({
       el:"#root",
-      data:data
+      data:{"message":"Ola Brasil",
+            "obj":{"something":"cool"}
+          }
 
     })
 
