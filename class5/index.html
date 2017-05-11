@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title></title>
+  <style>
+.red{background:red;}
+  </style>
+</head>
+<body>
+
+  <div id="root">
+<button v-bind:title=varTitle :class={'red':clicked} @click="toggleClass">Add name</button>
+<button :title=varTitle >Add name</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.js"></script>
+    <script>
+
+
+    new Vue({
+      el:"#root",
+      data:{
+        varTitle:"Test",
+        clicked:false
+      },
+      methods:{
+        toggleClass:function(){
+          this.clicked = !this.clicked;
+        }
+      }
+
+
+
+    })
+
+    </script>
+</body>
+
+</html>
