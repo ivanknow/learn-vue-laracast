@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title></title>
+  <style>
+
+  </style>
+</head>
+<body>
+
+  <div id="root">
+
+	<ul>
+
+    <li v-for="task in tasks" v-text="task.desc"></li>
+
+  </ul>
+
+  <ul>
+
+    <li v-for="task in justDone" v-text="task.desc"></li>
+
+  </ul>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.js"></script>
+    <script>
+
+
+    new Vue({
+      el:"#root",
+      data:{
+        tasks:[
+          {desc:"PCC",done:true},
+          {desc:"learn vue",done:false},
+          {desc:"korter",done:false},
+          {desc:"TCC",done:false},
+          {desc:"Almoco",done:true},
+          {desc:"Bugs",done:true},
+         ]
+      },
+	  computed:{
+		    justDone(){
+		          return this.tasks.filter(task=>!task.done);
+		          }
+	           }
+
+    })
+
+    </script>
+</body>
+
+</html>
