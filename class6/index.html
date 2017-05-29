@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title></title>
+  <style>
+
+  </style>
+</head>
+<body>
+
+  <div id="root">
+
+	<H1>{{name}}</H1>
+	<H1>{{reverseName}}</H1>
+  
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.js"></script>
+    <script>
+
+
+    new Vue({
+      el:"#root",
+      data:{
+        name:"Ivan Rodrigues"
+      },
+	  computed:{
+		reverseName:function(){
+		return this.name.split("").reverse().join("");
+		}
+	  }
+
+
+
+    })
+
+    </script>
+</body>
+
+</html>
