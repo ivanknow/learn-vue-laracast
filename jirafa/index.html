@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title></title>
+  <style>
+
+  </style>
+</head>
+<body>
+
+  <div id="bugcreator">
+	
+	<input v-model="item.title"/>
+	<button v-bind:title=varTitle  @click="save">Add</button>
+	
+		<div v-for="itemlist in listaItems">
+
+				<span v-text="itemlist.title"></span>
+				<div>
+					<input v-model="itemlist.current.title"/>
+					<button v-bind:title=varTitle  @click="savesubitem(itemlist)">Add</button>
+
+							<div v-for="subitem in itemlist.subitems">
+								
+								<span v-text="itemlist.title"></span>
+							</div>
+				</div>
+	
+		</div>
+	<hr/>
+  <div>
+  <ol>
+	<span v-for="itemlist in listaItems">
+    <li >
+	{{itemlist.title}}
+		<ol>
+			<li   v-for="subitem in itemlist.subitems" v-text="subitem.title"></li>
+			<button  @click="edititem(subitem)">Edit</button>
+		</ol>
+	</li>
+	</span>
+  </ol>
+  </div>
+  <div>
+  <textarea style="height:100%;width:100%;" v-model="asJson"></textarea>
+  </div>
+  
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.js"></script>
+  <script>
+	new Vue({
+      el:"#bugcreator",
+      data:{
+		varTitle:"add",
+        listaItems:[],
+		item:{title:"",subitems:[],current:{title:"",subitems:[]}},
+		
+      },
+	  methods:{
+        save:function(){
+          this.listaItems.push(this.item);
+		  this.item = {title:"",subitems:[],current:{title:"",subitems:[]}};
+        },
+		savesubitem:function(item){
+          item.subitems.push(item.current);
+		  item.current = {title:"",subitems:[]};
+		  console.log("",item);
+        },
+		getClearItem(){
+			return {title:"",subitems:[],current:{title:"",subitems:[]}}
+		}
+      },
+	  computed:{
+		asJson(){
+		          return JSON.stringify(this.listaItems, null, "\t");
+		          },
+		getClearItem(){
+			return {title:"",subitems:[],current:{title:"",subitems:[]}}
+		}
+	   }
+	  
+	  })
+
+    </script>
+</body>
+
+</html>
